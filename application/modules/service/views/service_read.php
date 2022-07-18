@@ -21,7 +21,7 @@
                      <table class="table">
 	    <tr><td>Nama Service</td><td><?php echo $nama_service; ?></td></tr>
 	    <tr><td>Deskripsi</td><td><?php echo $deskripsi; ?></td></tr>
-	    <tr><td>Gambar</td><td><?php echo $gambar; ?></td></tr>
+	    <tr><td>Gambar</td><td><img class="img-responsive" src='<?php echo base_url('assets/img/service/'.$gambar) ?>'></td></tr>
 	</table>
                     </div>
                 </div>

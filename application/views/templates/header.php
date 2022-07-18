@@ -35,6 +35,8 @@ if (!$user) {
     <!-- custom css -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/dashboard-style.css">
 
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+
     <!-- jQuery 3 -->
     <script src="<?php echo base_url('assets/lte/') ?>bower_components/jquery/dist/jquery.min.js"></script>
     <!-- DataTables -->

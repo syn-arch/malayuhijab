@@ -23,6 +23,24 @@
                                                 <input type="text" class="form-control" name="nama_website" id="nama_website" placeholder="Nama Website" value="<?php echo $nama_website; ?>" />
                                                 <?php echo form_error('nama_website', '<small style="color:red">','</small>') ?>
                                             </div>
+	
+                                            <?php if($this->uri->segment('3')) : ?>
+                                            <div class="form-group">
+                                                <img class="img-responsive" src="<?php echo base_url('assets/img/website/') . $logo ?>">
+                                            </div>
+                                            <div class="form-group <?php if(form_error('logo')) echo 'has-error'?> ">
+                                                <label for="logo">Logo</label>
+                                                <input type="file" class="form-control" name="logo" id="logo" placeholder="Logo" value="<?php echo $logo; ?>" />
+                                                <?php echo form_error('logo', '<small style="color:red">','</small>') ?>
+                                            </div>
+                                            <?php else: ?>
+                                            <div class="form-group <?php if(form_error('logo')) echo 'has-error'?> ">
+                                                <label for="logo">Logo</label>
+                                                <input required type="file" class="form-control" name="logo" id="logo" placeholder="Logo" value="<?php echo $logo; ?>" />
+                                                <?php echo form_error('logo', '<small style="color:red">','</small>') ?>
+                                            </div>
+                                            <?php endif; ?>
+                                            
 	    <div class="form-group <?php if(form_error('deskripsi')) echo 'has-error'?> ">
                                                 <label for="deskripsi">Deskripsi</label>
                                                 <textarea class="form-control" rows="3" name="deskripsi" id="deskripsi" placeholder="Deskripsi"><?php echo $deskripsi; ?></textarea>
@@ -38,24 +56,11 @@
                                                 <textarea class="form-control" rows="3" name="deskripsi_testimoni" id="deskripsi_testimoni" placeholder="Deskripsi Testimoni"><?php echo $deskripsi_testimoni; ?></textarea>
                                                 <?php echo form_error('deskripsi_testimoni', '<small style="color:red">','</small>') ?>
                                             </div>
-	
-                                            <?php if($this->uri->segment('3')) : ?>
-                                            <div class="form-group">
-                                                <img class="img-responsive" src="<?php echo base_url('assets/img/website/') . $gambar_tentang ?>">
-                                            </div>
-                                            <div class="form-group <?php if(form_error('gambar_tentang')) echo 'has-error'?> ">
+	    <div class="form-group <?php if(form_error('gambar_tentang')) echo 'has-error'?> ">
                                                 <label for="gambar_tentang">Gambar Tentang</label>
-                                                <input type="file" class="form-control" name="gambar_tentang" id="gambar_tentang" placeholder="Gambar Tentang" value="<?php echo $gambar_tentang; ?>" />
+                                                <input type="text" class="form-control" name="gambar_tentang" id="gambar_tentang" placeholder="Gambar Tentang" value="<?php echo $gambar_tentang; ?>" />
                                                 <?php echo form_error('gambar_tentang', '<small style="color:red">','</small>') ?>
                                             </div>
-                                            <?php else: ?>
-                                            <div class="form-group <?php if(form_error('gambar_tentang')) echo 'has-error'?> ">
-                                                <label for="gambar_tentang">Gambar Tentang</label>
-                                                <input required type="file" class="form-control" name="gambar_tentang" id="gambar_tentang" placeholder="Gambar Tentang" value="<?php echo $gambar_tentang; ?>" />
-                                                <?php echo form_error('gambar_tentang', '<small style="color:red">','</small>') ?>
-                                            </div>
-                                            <?php endif; ?>
-                                            
 	    <div class="form-group <?php if(form_error('gambar_kontak')) echo 'has-error'?> ">
                                                 <label for="gambar_kontak">Gambar Kontak</label>
                                                 <input type="text" class="form-control" name="gambar_kontak" id="gambar_kontak" placeholder="Gambar Kontak" value="<?php echo $gambar_kontak; ?>" />

@@ -102,11 +102,38 @@ function _upload($name, $url, $path)
     return $ci->upload->data('file_name');
 }
 
+function _upload_thumbnail($name, $url, $path)
+{
+    $ci = &get_instance();
+    $config['upload_path'] = './assets/img/' . $path . '/';
+    $config['allowed_types'] = 'pdf|jpg|png|jpeg';
+    $config['max_size']  = '4048';
+
+    $ci->load->library('upload', $config);
+
+    if (!$ci->upload->do_upload($name)) {
+        $ci->session->set_flashdata('error', $ci->upload->display_errors());
+        redirect($url, 'refresh');
+    }
+    return $ci->upload->data();
+}
+
 function delImage($table, $id, $column = 'gambar')
 {
     $ci = &get_instance();
     $gambar_lama = $ci->db->get_where($table, ['id_' . $table => $id])->row_array()[$column];
     $path = 'assets/img/' . $table . '/' . $gambar_lama;
+
+    if (file_exists(FCPATH . $path)) {
+        unlink(FCPATH . $path);
+    }
+}
+
+function delImageThumb($table, $id, $column = 'gambar')
+{
+    $ci = &get_instance();
+    $gambar_lama = $ci->db->get_where($table, ['id_' . $table => $id])->row_array()[$column];
+    $path = 'assets/img/' . $table . '/' . 'thumb_'  . $gambar_lama;
 
     if (file_exists(FCPATH . $path)) {
         unlink(FCPATH . $path);
@@ -149,4 +176,21 @@ function rrmdir($dir)
         }
         rmdir($dir);
     }
+}
+
+function slugify($string)
+{
+    // Get an instance of $this
+    $CI = &get_instance();
+
+    $CI->load->helper('text');
+    $CI->load->helper('url');
+
+    // Replace unsupported characters (add your owns if necessary)
+    $string = str_replace("'", '-', $string);
+    $string = str_replace(".", '-', $string);
+    $string = str_replace("²", '2', $string);
+
+    // Slugify and return the string
+    return url_title(convert_accented_characters($string), 'dash', true);
 }

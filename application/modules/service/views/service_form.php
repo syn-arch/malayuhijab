@@ -19,20 +19,33 @@
                     <div class="col-md-8">
                         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
 	    <div class="form-group <?php if(form_error('nama_service')) echo 'has-error'?> ">
-                                            <label for="nama_service">Nama Service</label>
-                                            <input type="text" class="form-control" name="nama_service" id="nama_service" placeholder="Nama Service" value="<?php echo $nama_service; ?>" />
-                                            <?php echo form_error('nama_service', '<small style="color:red">','</small>') ?>
-                                        </div>
+                                                <label for="nama_service">Nama Service</label>
+                                                <input type="text" class="form-control" name="nama_service" id="nama_service" placeholder="Nama Service" value="<?php echo $nama_service; ?>" />
+                                                <?php echo form_error('nama_service', '<small style="color:red">','</small>') ?>
+                                            </div>
 	    <div class="form-group <?php if(form_error('deskripsi')) echo 'has-error'?> ">
-                                            <label for="deskripsi">Deskripsi</label>
-                                            <textarea class="form-control" rows="3" name="deskripsi" id="deskripsi" placeholder="Deskripsi"><?php echo $deskripsi; ?></textarea>
-                                            <?php echo form_error('deskripsi', '<small style="color:red">','</small>') ?>
-                                        </div>
-	    <div class="form-group <?php if(form_error('gambar')) echo 'has-error'?> ">
-                                            <label for="gambar">Gambar</label>
-                                            <input type="text" class="form-control" name="gambar" id="gambar" placeholder="Gambar" value="<?php echo $gambar; ?>" />
-                                            <?php echo form_error('gambar', '<small style="color:red">','</small>') ?>
-                                        </div>
+                                                <label for="deskripsi">Deskripsi</label>
+                                                <textarea class="form-control" rows="3" name="deskripsi" id="deskripsi" placeholder="Deskripsi"><?php echo $deskripsi; ?></textarea>
+                                                <?php echo form_error('deskripsi', '<small style="color:red">','</small>') ?>
+                                            </div>
+	
+                                            <?php if($this->uri->segment('3')) : ?>
+                                            <div class="form-group">
+                                                <img class="img-responsive" src="<?php echo base_url('assets/img/service/') . $gambar ?>">
+                                            </div>
+                                            <div class="form-group <?php if(form_error('gambar')) echo 'has-error'?> ">
+                                                <label for="gambar">Gambar</label>
+                                                <input type="file" class="form-control" name="gambar" id="gambar" placeholder="Gambar" value="<?php echo $gambar; ?>" />
+                                                <?php echo form_error('gambar', '<small style="color:red">','</small>') ?>
+                                            </div>
+                                            <?php else: ?>
+                                            <div class="form-group <?php if(form_error('gambar')) echo 'has-error'?> ">
+                                                <label for="gambar">Gambar</label>
+                                                <input required type="file" class="form-control" name="gambar" id="gambar" placeholder="Gambar" value="<?php echo $gambar; ?>" />
+                                                <?php echo form_error('gambar', '<small style="color:red">','</small>') ?>
+                                            </div>
+                                            <?php endif; ?>
+                                            
 	    <input type="hidden" name="id_service" value="<?php echo $id_service; ?>" /> 
 	    <button type="submit" class="btn btn-primary btn-block">SUBMIT</button> 
 	</form>

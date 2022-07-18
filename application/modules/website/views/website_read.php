@@ -20,10 +20,11 @@
                     <div class="col-md-8">
                      <table class="table">
 	    <tr><td>Nama Website</td><td><?php echo $nama_website; ?></td></tr>
+	    <tr><td>Logo</td><td><img class="img-responsive" src='<?php echo base_url('assets/img/website/'.$logo) ?>'></td></tr>
 	    <tr><td>Deskripsi</td><td><?php echo $deskripsi; ?></td></tr>
 	    <tr><td>Deskripsi Service</td><td><?php echo $deskripsi_service; ?></td></tr>
 	    <tr><td>Deskripsi Testimoni</td><td><?php echo $deskripsi_testimoni; ?></td></tr>
-	    <tr><td>Gambar Tentang</td><td><img class="img-responsive" src='<?php echo base_url('assets/img/website/'.$gambar_tentang) ?>'></td></tr>
+	    <tr><td>Gambar Tentang</td><td><?php echo $gambar_tentang; ?></td></tr>
 	    <tr><td>Gambar Kontak</td><td><?php echo $gambar_kontak; ?></td></tr>
 	</table>
                     </div>

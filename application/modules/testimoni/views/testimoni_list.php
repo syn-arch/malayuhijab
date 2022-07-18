@@ -103,7 +103,12 @@ $access = $this->db->get('akses_role')->row_array();
                                         "orderable": false,
                                         "className" : "text-center"
                                     },
-                                    {"data": "nama_testimoni"},{"data": "deskripsi"},{"data": "gambar"},
+                                    {"data": "nama_testimoni"},{"data": "deskripsi"},{
+                                        "data": "gambar",
+                                        "render" : function (data, type, row, meta) {
+                                            return '<img src="<?php echo base_url('assets/img/testimoni/') ?>'+data+'" width="100">';
+                                        }
+                                    },
                                     {
                                         "data" : "action",
                                         "orderable": false,
@@ -142,7 +147,12 @@ $access = $this->db->get('akses_role')->row_array();
                                     "data": "id_testimoni",
                                     "orderable": false
                                 },
-                                {"data": "nama_testimoni"},{"data": "deskripsi"},{"data": "gambar"},
+                                {"data": "nama_testimoni"},{"data": "deskripsi"},{
+                                        "data": "gambar",
+                                        "render" : function (data, type, row, meta) {
+                                            return '<img src="<?php echo base_url('assets/img/testimoni/') ?>'+data+'" width="100">';
+                                        }
+                                    },
                                 {
                                     "data" : "action",
                                     "orderable": false,
@@ -186,7 +196,12 @@ $access = $this->db->get('akses_role')->row_array();
                                     "orderable": false,
                                     "className" : "text-center"
                                 },
-                                {"data": "nama_testimoni"},{"data": "deskripsi"},{"data": "gambar"},
+                                {"data": "nama_testimoni"},{"data": "deskripsi"},{
+                                        "data": "gambar",
+                                        "render" : function (data, type, row, meta) {
+                                            return '<img src="<?php echo base_url('assets/img/testimoni/') ?>'+data+'" width="100">';
+                                        }
+                                    },
                                 {
                                     "data" : "action",
                                     "orderable": false,
@@ -225,7 +240,12 @@ $access = $this->db->get('akses_role')->row_array();
                                     "data": "id_testimoni",
                                     "orderable": false
                                 },
-                                {"data": "nama_testimoni"},{"data": "deskripsi"},{"data": "gambar"},
+                                {"data": "nama_testimoni"},{"data": "deskripsi"},{
+                                        "data": "gambar",
+                                        "render" : function (data, type, row, meta) {
+                                            return '<img src="<?php echo base_url('assets/img/testimoni/') ?>'+data+'" width="100">';
+                                        }
+                                    },
                                 {
                                     "data" : "action",
                                     "orderable": false,

@@ -1,17 +1,3 @@
-
-<?php 
-
-$menu = $this->uri->segment(1);
-$id_menu = $this->db->get_where('menu', ['url' => $menu])->row_array()['id_menu'];
-$id_role = $this->session->userdata('id_role');
-
-$this->db->select('c, u ,d');
-$this->db->where('id_menu', $id_menu);
-$this->db->where('id_role', $id_role);
-$access = $this->db->get('akses_role')->row_array();
-
-?>
-
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-primary">
@@ -23,229 +9,43 @@ $access = $this->db->get('akses_role')->row_array();
                 </div>
                 <div class="pull-right">
                     <div class="box-title">
-                        <?php if ($access['d']): ?>
-                        <a href="javascrip:void(0)" class="btn btn-danger hapus_bulk"><i class="fa fa-trash"></i> Hapus Terpilih</a>
-                        <?php endif ?>
-                        <?php if ($access['c']): ?>
-                            <a href="<?php echo base_url('tentang/create') ?>" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Data</a>
-                        <?php endif ?>
-	
+                        <a href="<?php echo base_url('tentang') ?>" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
                     </div>
                 </div>
             </div>
             <div class="box-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped dt" width="100%" id="#mytable">
-                       <thead>
-                    <tr>
-                    <th>No</th>
-                    <?php if ($access['d']): ?>
-                    <th><input type="checkbox" name="hapus_bulk" id="hapus_bulk" class="check_all"></th>
-                    <?php endif ?>
-		<th>Deskripsi</th>
-		<th>Maps</th>
-		<th>Alamat</th>
-		<th>Whatsapp</th>
-		    
-                                <th>Action</th>
-                                </tr>
-                                </thead>
-	    
-                            </table>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data">
+                            <div class="form-group <?php if (form_error('deskripsi')) echo 'has-error' ?> ">
+                                <label for="deskripsi">Deskripsi</label>
+                                <textarea class="form-control" rows="3" name="deskripsi" id="deskripsi" placeholder="Deskripsi"><?php echo $deskripsi; ?></textarea>
+                                <?php echo form_error('deskripsi', '<small style="color:red">', '</small>') ?>
+                            </div>
+                            <div class="form-group <?php if (form_error('maps')) echo 'has-error' ?> ">
+                                <label for="maps">Maps</label>
+                                <textarea class="form-control" rows="3" name="maps" id="maps" placeholder="Maps"><?php echo $maps; ?></textarea>
+                                <?php echo form_error('maps', '<small style="color:red">', '</small>') ?>
+                            </div>
+                            <div class="form-group <?php if (form_error('alamat')) echo 'has-error' ?> ">
+                                <label for="alamat">Alamat</label>
+                                <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat" value="<?php echo $alamat; ?>" />
+                                <?php echo form_error('alamat', '<small style="color:red">', '</small>') ?>
+                            </div>
+                            <div class="form-group <?php if (form_error('whatsapp')) echo 'has-error' ?> ">
+                                <label for="whatsapp">Whatsapp</label>
+                                <input type="text" class="form-control" name="whatsapp" id="whatsapp" placeholder="Whatsapp" value="<?php echo $whatsapp; ?>" />
+                                <?php echo form_error('whatsapp', '<small style="color:red">', '</small>') ?>
+                            </div>
+                            <input type="hidden" name="id_tentang" value="<?php echo $id_tentang; ?>" />
+                            <button type="submit" class="btn btn-primary btn-block">SUBMIT</button>
+                        </form>
+                    </div>
                 </div>
+            </div>
+            <div class="box-footer">
             </div>
         </div>
     </div>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-
-                let up = '<?php echo $access['u'] ?>';
-                let del = '<?php echo $access['d'] ?>';
-
-                $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings)
-                {
-                    return {
-                        "iStart": oSettings._iDisplayStart,
-                        "iEnd": oSettings.fnDisplayEnd(),
-                        "iLength": oSettings._iDisplayLength,
-                        "iTotal": oSettings.fnRecordsTotal(),
-                        "iFilteredTotal": oSettings.fnRecordsDisplay(),
-                        "iPage": Math.ceil(oSettings._iDisplayStart / oSettings._iDisplayLength),
-                        "iTotalPages": Math.ceil(oSettings.fnRecordsDisplay() / oSettings._iDisplayLength)
-                    };
-                };
-
-                 if (up == '1' && del == '1') {
-                        var t = $(".dt").dataTable({
-                                initComplete: function() {
-                                    var api = this.api();
-                                    $('#mytable_filter input')
-                                            .off('.DT')
-                                            .on('keyup.DT', function(e) {
-                                                if (e.keyCode == 13) {
-                                                    api.search(this.value).draw();
-                                        }
-                                    });
-                                },
-                                oLanguage: {
-                                    sProcessing: "loading..."
-                                },
-                                processing: true,
-                                serverSide: true,
-                                ajax: {"url": "tentang/json", "type": "POST"},
-                                columns: [
-                                    {
-                                        "data": "id_tentang",
-                                        "orderable": false
-                                    },
-                                    {
-                                        "data" : "hapus_bulk",
-                                        "orderable": false,
-                                        "className" : "text-center"
-                                    },
-                                    {"data": "deskripsi"},{"data": "maps"},{"data": "alamat"},{"data": "whatsapp"},
-                                    {
-                                        "data" : "action",
-                                        "orderable": false,
-                                        "className" : "text-center"
-                                    }
-                                ],
-                                order: [[0, 'desc']],
-                                rowCallback: function(row, data, iDisplayIndex) {
-                                    var info = this.fnPagingInfo();
-                                    var page = info.iPage;
-                                    var length = info.iLength;
-                                    var index = page * length + (iDisplayIndex + 1);
-                                    $('td:eq(0)', row).html(index);
-                                }
-                            });
-                    }else if( up == '1'){
-                        var t = $(".dt").dataTable({
-                            initComplete: function() {
-                                var api = this.api();
-                                $('#mytable_filter input')
-                                        .off('.DT')
-                                        .on('keyup.DT', function(e) {
-                                            if (e.keyCode == 13) {
-                                                api.search(this.value).draw();
-                                    }
-                                });
-                            },
-                            oLanguage: {
-                                sProcessing: "loading..."
-                            },
-                            processing: true,
-                            serverSide: true,
-                            ajax: {"url": "tentang/json", "type": "POST"},
-                            columns: [
-                                {
-                                    "data": "id_tentang",
-                                    "orderable": false
-                                },
-                                {"data": "deskripsi"},{"data": "maps"},{"data": "alamat"},{"data": "whatsapp"},
-                                {
-                                    "data" : "action",
-                                    "orderable": false,
-                                    "className" : "text-center"
-                                }
-                            ],
-                            order: [[0, 'desc']],
-                            rowCallback: function(row, data, iDisplayIndex) {
-                                var info = this.fnPagingInfo();
-                                var page = info.iPage;
-                                var length = info.iLength;
-                                var index = page * length + (iDisplayIndex + 1);
-                                $('td:eq(0)', row).html(index);
-                            }
-                        });
-                    } else if(del == '1'){
-                         var t = $(".dt").dataTable({
-                            initComplete: function() {
-                                var api = this.api();
-                                $('#mytable_filter input')
-                                        .off('.DT')
-                                        .on('keyup.DT', function(e) {
-                                            if (e.keyCode == 13) {
-                                                api.search(this.value).draw();
-                                    }
-                                });
-                            },
-                            oLanguage: {
-                                sProcessing: "loading..."
-                            },
-                            processing: true,
-                            serverSide: true,
-                            ajax: {"url": "tentang/json", "type": "POST"},
-                            columns: [
-                                {
-                                    "data": "id_tentang",
-                                    "orderable": false
-                                },
-                                {
-                                    "data" : "hapus_bulk",
-                                    "orderable": false,
-                                    "className" : "text-center"
-                                },
-                                {"data": "deskripsi"},{"data": "maps"},{"data": "alamat"},{"data": "whatsapp"},
-                                {
-                                    "data" : "action",
-                                    "orderable": false,
-                                    "className" : "text-center"
-                                }
-                            ],
-                            order: [[0, 'desc']],
-                            rowCallback: function(row, data, iDisplayIndex) {
-                                var info = this.fnPagingInfo();
-                                var page = info.iPage;
-                                var length = info.iLength;
-                                var index = page * length + (iDisplayIndex + 1);
-                                $('td:eq(0)', row).html(index);
-                            }
-                        });
-                    }else{
-                         var t = $(".dt").dataTable({
-                            initComplete: function() {
-                                var api = this.api();
-                                $('#mytable_filter input')
-                                        .off('.DT')
-                                        .on('keyup.DT', function(e) {
-                                            if (e.keyCode == 13) {
-                                                api.search(this.value).draw();
-                                    }
-                                });
-                            },
-                            oLanguage: {
-                                sProcessing: "loading..."
-                            },
-                            processing: true,
-                            serverSide: true,
-                            ajax: {"url": "tentang/json", "type": "POST"},
-                            columns: [
-                                {
-                                    "data": "id_tentang",
-                                    "orderable": false
-                                },
-                                {"data": "deskripsi"},{"data": "maps"},{"data": "alamat"},{"data": "whatsapp"},
-                                {
-                                    "data" : "action",
-                                    "orderable": false,
-                                    "className" : "text-center"
-                                }
-                            ],
-                            order: [[0, 'desc']],
-                            rowCallback: function(row, data, iDisplayIndex) {
-                                var info = this.fnPagingInfo();
-                                var page = info.iPage;
-                                var length = info.iLength;
-                                var index = page * length + (iDisplayIndex + 1);
-                                $('td:eq(0)', row).html(index);
-                            }
-                        });
-                    }
-
-
-            });
-                    const table_name = 'tentang';
-
-        </script>
+</div>
