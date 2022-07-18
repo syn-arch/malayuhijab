@@ -75,6 +75,26 @@ class Produk_model extends CI_Model
         return $this->datatables->generate();
     }
 
+    function get_produk_list($limit, $start, $q = '')
+    {
+        if ($filter = $this->input->get('filter')) {
+            if ($filter == 'tertinggi') {
+                $this->db->order_by('harga', 'desc');
+            }
+            if ($filter == 'terendah') {
+                $this->db->order_by('harga', 'asc');
+            }
+            if ($filter == 'terbaru') {
+                $this->db->order_by('id_produk', 'desc');
+            }
+        }
+        if ($q) {
+            $this->db->like('nama_produk', $q, 'both');
+        }
+        $query = $this->db->get('produk', $limit, $start)->result();
+        return $query;
+    }
+
     // get all
     function get_all()
     {

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jul 2022 pada 15.58
--- Versi server: 10.4.13-MariaDB
--- Versi PHP: 7.4.7
+-- Host: localhost
+-- Generation Time: Jul 18, 2022 at 05:25 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `akses_role`
+-- Table structure for table `akses_role`
 --
 
 CREATE TABLE `akses_role` (
@@ -37,7 +37,7 @@ CREATE TABLE `akses_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `akses_role`
+-- Dumping data for table `akses_role`
 --
 
 INSERT INTO `akses_role` (`akses_role`, `id_menu`, `id_role`, `c`, `u`, `d`) VALUES
@@ -64,7 +64,7 @@ INSERT INTO `akses_role` (`akses_role`, `id_menu`, `id_role`, `c`, `u`, `d`) VAL
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `backup`
+-- Table structure for table `backup`
 --
 
 CREATE TABLE `backup` (
@@ -76,7 +76,7 @@ CREATE TABLE `backup` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `gambar_produk`
+-- Table structure for table `gambar_produk`
 --
 
 CREATE TABLE `gambar_produk` (
@@ -87,12 +87,10 @@ CREATE TABLE `gambar_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `gambar_produk`
+-- Dumping data for table `gambar_produk`
 --
 
 INSERT INTO `gambar_produk` (`id_gambar_produk`, `id_produk`, `type`, `gambar`) VALUES
-(26, 2, '', 'avatar.jpg'),
-(27, 2, '', 'hero.jpg'),
 (28, 1, '', 'slider1.jpg'),
 (29, 1, '', 'slider2.jpg'),
 (30, 1, '', 'slider3.jpg');
@@ -100,7 +98,7 @@ INSERT INTO `gambar_produk` (`id_gambar_produk`, `id_produk`, `type`, `gambar`) 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `marketplace`
+-- Table structure for table `marketplace`
 --
 
 CREATE TABLE `marketplace` (
@@ -112,7 +110,7 @@ CREATE TABLE `marketplace` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `marketplace`
+-- Dumping data for table `marketplace`
 --
 
 INSERT INTO `marketplace` (`id_marketplace`, `nama_marketplace`, `deskripsi`, `gambar`, `link_marketplace`) VALUES
@@ -123,7 +121,7 @@ INSERT INTO `marketplace` (`id_marketplace`, `nama_marketplace`, `deskripsi`, `g
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `marketplace_produk`
+-- Table structure for table `marketplace_produk`
 --
 
 CREATE TABLE `marketplace_produk` (
@@ -134,7 +132,7 @@ CREATE TABLE `marketplace_produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `marketplace_produk`
+-- Dumping data for table `marketplace_produk`
 --
 
 INSERT INTO `marketplace_produk` (`id_marketplace_produk`, `id_marketplace`, `id_produk`, `link`) VALUES
@@ -145,7 +143,7 @@ INSERT INTO `marketplace_produk` (`id_marketplace_produk`, `id_marketplace`, `id
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `menu`
+-- Table structure for table `menu`
 --
 
 CREATE TABLE `menu` (
@@ -160,7 +158,7 @@ CREATE TABLE `menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `menu`
+-- Dumping data for table `menu`
 --
 
 INSERT INTO `menu` (`id_menu`, `nama_menu`, `icon`, `ada_submenu`, `submenu`, `url`, `urutan`, `crudable`) VALUES
@@ -186,7 +184,7 @@ INSERT INTO `menu` (`id_menu`, `nama_menu`, `icon`, `ada_submenu`, `submenu`, `u
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengaturan`
+-- Table structure for table `pengaturan`
 --
 
 CREATE TABLE `pengaturan` (
@@ -201,7 +199,7 @@ CREATE TABLE `pengaturan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pengaturan`
+-- Dumping data for table `pengaturan`
 --
 
 INSERT INTO `pengaturan` (`id_pengaturan`, `nama_aplikasi`, `logo`, `smtp_host`, `smtp_email`, `smtp_username`, `smtp_password`, `smtp_port`) VALUES
@@ -210,7 +208,7 @@ INSERT INTO `pengaturan` (`id_pengaturan`, `nama_aplikasi`, `logo`, `smtp_host`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk`
+-- Table structure for table `produk`
 --
 
 CREATE TABLE `produk` (
@@ -223,7 +221,7 @@ CREATE TABLE `produk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `produk`
+-- Dumping data for table `produk`
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `slug`, `deskripsi`, `harga`, `thumbnail`) VALUES
@@ -252,7 +250,7 @@ INSERT INTO `produk` (`id_produk`, `nama_produk`, `slug`, `deskripsi`, `harga`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `role`
+-- Table structure for table `role`
 --
 
 CREATE TABLE `role` (
@@ -261,7 +259,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `role`
+-- Dumping data for table `role`
 --
 
 INSERT INTO `role` (`id_role`, `nama_role`) VALUES
@@ -270,7 +268,7 @@ INSERT INTO `role` (`id_role`, `nama_role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `service`
+-- Table structure for table `service`
 --
 
 CREATE TABLE `service` (
@@ -281,7 +279,7 @@ CREATE TABLE `service` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `service`
+-- Dumping data for table `service`
 --
 
 INSERT INTO `service` (`id_service`, `nama_service`, `deskripsi`, `gambar`) VALUES
@@ -292,7 +290,7 @@ INSERT INTO `service` (`id_service`, `nama_service`, `deskripsi`, `gambar`) VALU
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `slider`
+-- Table structure for table `slider`
 --
 
 CREATE TABLE `slider` (
@@ -302,7 +300,7 @@ CREATE TABLE `slider` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `slider`
+-- Dumping data for table `slider`
 --
 
 INSERT INTO `slider` (`id_slider`, `keterangan`, `gambar`) VALUES
@@ -313,7 +311,7 @@ INSERT INTO `slider` (`id_slider`, `keterangan`, `gambar`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sosial_media`
+-- Table structure for table `sosial_media`
 --
 
 CREATE TABLE `sosial_media` (
@@ -324,7 +322,7 @@ CREATE TABLE `sosial_media` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sosial_media`
+-- Dumping data for table `sosial_media`
 --
 
 INSERT INTO `sosial_media` (`id_sosial_media`, `nama_sosial_media`, `link`, `gambar`) VALUES
@@ -335,7 +333,7 @@ INSERT INTO `sosial_media` (`id_sosial_media`, `nama_sosial_media`, `link`, `gam
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tentang`
+-- Table structure for table `tentang`
 --
 
 CREATE TABLE `tentang` (
@@ -347,7 +345,7 @@ CREATE TABLE `tentang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tentang`
+-- Dumping data for table `tentang`
 --
 
 INSERT INTO `tentang` (`id_tentang`, `deskripsi`, `maps`, `alamat`, `whatsapp`) VALUES
@@ -356,7 +354,7 @@ INSERT INTO `tentang` (`id_tentang`, `deskripsi`, `maps`, `alamat`, `whatsapp`) 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `testimoni`
+-- Table structure for table `testimoni`
 --
 
 CREATE TABLE `testimoni` (
@@ -367,7 +365,7 @@ CREATE TABLE `testimoni` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `testimoni`
+-- Dumping data for table `testimoni`
 --
 
 INSERT INTO `testimoni` (`id_testimoni`, `nama_testimoni`, `deskripsi`, `gambar`) VALUES
@@ -379,7 +377,7 @@ INSERT INTO `testimoni` (`id_testimoni`, `nama_testimoni`, `deskripsi`, `gambar`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `token_user`
+-- Table structure for table `token_user`
 --
 
 CREATE TABLE `token_user` (
@@ -392,7 +390,7 @@ CREATE TABLE `token_user` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -408,7 +406,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `jk`, `telepon`, `email`, `password`, `gambar`, `id_role`) VALUES
@@ -417,7 +415,7 @@ INSERT INTO `user` (`id_user`, `nama_user`, `alamat`, `jk`, `telepon`, `email`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `website`
+-- Table structure for table `website`
 --
 
 CREATE TABLE `website` (
@@ -432,7 +430,7 @@ CREATE TABLE `website` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `website`
+-- Dumping data for table `website`
 --
 
 INSERT INTO `website` (`id_website`, `nama_website`, `logo`, `deskripsi`, `deskripsi_service`, `deskripsi_testimoni`, `gambar_tentang`, `gambar_kontak`) VALUES
@@ -443,203 +441,203 @@ INSERT INTO `website` (`id_website`, `nama_website`, `logo`, `deskripsi`, `deskr
 --
 
 --
--- Indeks untuk tabel `akses_role`
+-- Indexes for table `akses_role`
 --
 ALTER TABLE `akses_role`
   ADD PRIMARY KEY (`akses_role`);
 
 --
--- Indeks untuk tabel `backup`
+-- Indexes for table `backup`
 --
 ALTER TABLE `backup`
   ADD PRIMARY KEY (`id_backup`);
 
 --
--- Indeks untuk tabel `gambar_produk`
+-- Indexes for table `gambar_produk`
 --
 ALTER TABLE `gambar_produk`
   ADD PRIMARY KEY (`id_gambar_produk`);
 
 --
--- Indeks untuk tabel `marketplace`
+-- Indexes for table `marketplace`
 --
 ALTER TABLE `marketplace`
   ADD PRIMARY KEY (`id_marketplace`);
 
 --
--- Indeks untuk tabel `marketplace_produk`
+-- Indexes for table `marketplace_produk`
 --
 ALTER TABLE `marketplace_produk`
   ADD PRIMARY KEY (`id_marketplace_produk`);
 
 --
--- Indeks untuk tabel `menu`
+-- Indexes for table `menu`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id_menu`);
 
 --
--- Indeks untuk tabel `pengaturan`
+-- Indexes for table `pengaturan`
 --
 ALTER TABLE `pengaturan`
   ADD PRIMARY KEY (`id_pengaturan`);
 
 --
--- Indeks untuk tabel `produk`
+-- Indexes for table `produk`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id_produk`);
 
 --
--- Indeks untuk tabel `role`
+-- Indexes for table `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id_role`);
 
 --
--- Indeks untuk tabel `service`
+-- Indexes for table `service`
 --
 ALTER TABLE `service`
   ADD PRIMARY KEY (`id_service`);
 
 --
--- Indeks untuk tabel `slider`
+-- Indexes for table `slider`
 --
 ALTER TABLE `slider`
   ADD PRIMARY KEY (`id_slider`);
 
 --
--- Indeks untuk tabel `sosial_media`
+-- Indexes for table `sosial_media`
 --
 ALTER TABLE `sosial_media`
   ADD PRIMARY KEY (`id_sosial_media`);
 
 --
--- Indeks untuk tabel `tentang`
+-- Indexes for table `tentang`
 --
 ALTER TABLE `tentang`
   ADD PRIMARY KEY (`id_tentang`);
 
 --
--- Indeks untuk tabel `testimoni`
+-- Indexes for table `testimoni`
 --
 ALTER TABLE `testimoni`
   ADD PRIMARY KEY (`id_testimoni`);
 
 --
--- Indeks untuk tabel `token_user`
+-- Indexes for table `token_user`
 --
 ALTER TABLE `token_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- Indeks untuk tabel `website`
+-- Indexes for table `website`
 --
 ALTER TABLE `website`
   ADD PRIMARY KEY (`id_website`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `akses_role`
+-- AUTO_INCREMENT for table `akses_role`
 --
 ALTER TABLE `akses_role`
   MODIFY `akses_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
 
 --
--- AUTO_INCREMENT untuk tabel `backup`
+-- AUTO_INCREMENT for table `backup`
 --
 ALTER TABLE `backup`
   MODIFY `id_backup` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `gambar_produk`
+-- AUTO_INCREMENT for table `gambar_produk`
 --
 ALTER TABLE `gambar_produk`
   MODIFY `id_gambar_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT untuk tabel `marketplace`
+-- AUTO_INCREMENT for table `marketplace`
 --
 ALTER TABLE `marketplace`
   MODIFY `id_marketplace` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `marketplace_produk`
+-- AUTO_INCREMENT for table `marketplace_produk`
 --
 ALTER TABLE `marketplace_produk`
   MODIFY `id_marketplace_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `menu`
+-- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
   MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT untuk tabel `pengaturan`
+-- AUTO_INCREMENT for table `pengaturan`
 --
 ALTER TABLE `pengaturan`
   MODIFY `id_pengaturan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `produk`
+-- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
   MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT untuk tabel `role`
+-- AUTO_INCREMENT for table `role`
 --
 ALTER TABLE `role`
   MODIFY `id_role` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `service`
+-- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
   MODIFY `id_service` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `slider`
+-- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
   MODIFY `id_slider` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `sosial_media`
+-- AUTO_INCREMENT for table `sosial_media`
 --
 ALTER TABLE `sosial_media`
   MODIFY `id_sosial_media` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT untuk tabel `tentang`
+-- AUTO_INCREMENT for table `tentang`
 --
 ALTER TABLE `tentang`
   MODIFY `id_tentang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `testimoni`
+-- AUTO_INCREMENT for table `testimoni`
 --
 ALTER TABLE `testimoni`
   MODIFY `id_testimoni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `token_user`
+-- AUTO_INCREMENT for table `token_user`
 --
 ALTER TABLE `token_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `website`
+-- AUTO_INCREMENT for table `website`
 --
 ALTER TABLE `website`
   MODIFY `id_website` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

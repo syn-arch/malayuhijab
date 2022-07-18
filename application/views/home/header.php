@@ -43,7 +43,7 @@
                         <a class="nav-link" href="<?= base_url('home/') ?>contact">Contact</a>
                     </li>
                 </ul>
-                <form class="d-flex align-items-center justify-content-end" role="search" action="<?= base_url('home/search') ?>">
+                <form class="d-flex align-items-center justify-content-end" role="search" action="<?= base_url('home/products') ?>">
                     <input type="text" placeholder="Search" class="form-control cari-input" name="q">
                     <button class=" border-0 bg-transparent" type="submit"><i class="fa-solid fa-magnifying-glass px-2 cari-btn"></i></button>
                 </form>

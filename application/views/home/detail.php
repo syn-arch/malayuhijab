@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="col-12">
                     <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-                        <a href="<?= base_url() ?>assets/img/gambar_produk/<?= $gambar_produk[0]->gambar ?>">
-                            <img src="<?= base_url() ?>assets/img/gambar_produk/<?= $gambar_produk[0]->gambar ?>" class="w-100 img-fluid" alt="" />
+                        <a href="<?= base_url() ?>assets/img/gambar_produk/<?= $gambar_produk[0]->gambar ?? $produk->thumbnail ?>">
+                            <img src="<?= base_url() ?>assets/img/gambar_produk/<?= $gambar_produk[0]->gambar ?? $produk->thumbnail ?>" class="w-100 img-fluid" alt="" />
                         </a>
                     </div>
                 </div>

@@ -103,7 +103,14 @@
             api1.swap($this.data('standard'), $this.attr('href'));
         });
     </script>
-
+    <script>
+        $(function() {
+            $('.filter-products').change(function() {
+                const filter = $(this).val()
+                window.location.href = `<?= base_url('home/products?filter=') ?>${filter}`
+            })
+        })
+    </script>
 
     <script src="https://kit.fontawesome.com/783904541b.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>

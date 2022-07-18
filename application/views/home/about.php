@@ -1,4 +1,5 @@
 <?php $tentang = $this->db->get('tentang')->row() ?>
+<?php $website = $this->db->get('website')->row() ?>
 <div class="hero text-light" style="background-image: url(<?= base_url('assets/img/website/') . $website->gambar_tentang ?>)">
     <div class="overlay"></div>
 </div>
