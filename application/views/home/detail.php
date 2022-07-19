@@ -4,8 +4,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="easyzoom easyzoom--overlay easyzoom--with-thumbnails">
-                        <a href="<?= base_url() ?>assets/img/gambar_produk/<?= $gambar_produk[0]->gambar ?? $produk->thumbnail ?>">
-                            <img src="<?= base_url() ?>assets/img/gambar_produk/<?= $gambar_produk[0]->gambar ?? $produk->thumbnail ?>" class="w-100 img-fluid" alt="" />
+                        <?php
+                        $thumnbail_produk = 'produk/' . $produk->thumbnail;
+                        $url = isset($gambar_produk[0]->gambar) ? 'gambar_produk/' . $gambar_produk[0]->gambar : $thumnbail_produk;
+                        ?>
+                        <a href="<?= base_url('assets/img/') . $url ?>">
+                            <img src="<?= base_url('assets/img/') . $url ?>" class="w-100 img-fluid" alt="" />
                         </a>
                     </div>
                 </div>
